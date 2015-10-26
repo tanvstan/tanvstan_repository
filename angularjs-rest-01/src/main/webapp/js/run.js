@@ -17,7 +17,13 @@ parking.run(function ($rootScope, $window) {
 });
 
 parking.run(function ($httpBackend) {
-  $httpBackend.whenGET("/cars").respond([{plate: "AAA9999", color: "Blue", entrance: new Date()}, {plate: "AAA9988", color: "Blue", entrance: new Date()}]);
+  $httpBackend.whenGET("/cars").respond([{id:"1", plate: "AAA9999", color: "Blue", entrance: new Date()}, {id:"2", plate: "AAA9988", color: "Blue", entrance: new Date()}]);
+  $httpBackend.whenPOST("/cars").respond("OK!");
+  $httpBackend.whenDELETE("/cars/1").respond("OK!");
+  $httpBackend.whenGET("/cars2").respond([ {id:"1", plate: "AAA9999", color: "Blue", entrance: new Date()}, {id:"2", plate: "AAA9988", color: "Blue", entrance: new Date()}, 
+      {id:"3", plate: "AAA9999", color: "Blue", entrance: new Date()}, {id:"4", plate: "AAA9988", color: "Blue", entrance: new Date()} ]);
+  $httpBackend.whenGET("/cars/1").respond({id:"1", plate: "AAA9999", color: "Blue", entrance: new Date()});
+  $httpBackend.whenGET("/cars/2").respond({id:"2", plate: "AAA9988", color: "Blue", entrance: new Date()});
   $httpBackend.whenGET(/./).passThrough();
 });
 

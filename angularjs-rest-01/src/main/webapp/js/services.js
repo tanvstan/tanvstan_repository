@@ -72,13 +72,16 @@ parking.factory("parkingHttpFacade", function ($http) {
     return $http.delete("/cars/" + id);
   };
 
-
+  var _retrieveCars = function (id) {
+    return $http.get("/cars2");
+  };
   return {
     getCars: _getCars,
     getCar: _getCar,
     saveCar: _saveCar,
     updateCar: _updateCar,
-    deleteCar: _deleteCar
+    deleteCar: _deleteCar, 
+    retrieveCars: _retrieveCars
   };
 });
 
